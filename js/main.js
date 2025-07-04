@@ -17,7 +17,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
-// Simple form validation
+// Simple form validation for consultation forms (if any)
 document.querySelectorAll('.consultation form').forEach(form => {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -36,6 +36,31 @@ document.querySelectorAll('.consultation form').forEach(form => {
     }
   });
 });
+
+/* Contact form submission (modal removed) */
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let valid = true;
+    // Validate required fields
+    const name = contactForm.querySelector('#contact-name');
+    const email = contactForm.querySelector('#contact-email');
+    const vision = contactForm.querySelector('#contact-vision');
+    [name, email, vision].forEach(input => {
+      if (!input.value.trim()) {
+        input.style.borderColor = '#e89b3c';
+        valid = false;
+      } else {
+        input.style.borderColor = '#ccc';
+      }
+    });
+    if (valid) {
+      alert('Thank you for your request! We will contact you soon.');
+      contactForm.reset();
+    }
+  });
+}
 
 /* Removed old hero title text swap on scroll (no longer needed) */
 
@@ -64,6 +89,96 @@ document.querySelectorAll('.consultation form').forEach(form => {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/**
+ * Parallax Zoom Effect for Portfolio Center Image
+ * (Patched: always applies after carousel render)
+ */
+let portfolioCenterObserver = null;
+let lastObservedCenterImg = null;
+function updatePortfolioZoom() {
+  const centerImg = document.querySelector('.portfolio-carousel .carousel-image.center');
+  if (!centerImg) return;
+  // Calculate scale: zoom in as you scroll down, zoom out as you scroll up
+  // Let's map window.scrollY from 0-600px to scale 1-1.2 (clamped)
+  const minScroll = 0;
+  const maxScroll = 600;
+  const minScale = 1;
+  const maxScale = 1.2;
+  const scrollY = window.scrollY;
+  const scale =
+    scrollY <= minScroll
+      ? minScale
+      : scrollY >= maxScroll
+      ? maxScale
+      : minScale + ((maxScale - minScale) * (scrollY - minScroll)) / (maxScroll - minScroll);
+  centerImg.setAttribute(
+    'style',
+    `transform: scale(${scale}) !important;` +
+    'transition: transform 0.2s cubic-bezier(0.4,0,0.2,1);' +
+    'z-index: 2;' +
+    'will-change: transform;'
+  );
+}
+
+// Observe the center image for intersection with viewport
+function observePortfolioCenterImage() {
+  const centerImg = document.querySelector('.portfolio-carousel .carousel-image.center');
+  if (!centerImg) return;
+  if (portfolioCenterObserver) {
+    if (lastObservedCenterImg) {
+      portfolioCenterObserver.unobserve(lastObservedCenterImg);
+    }
+  } else {
+    portfolioCenterObserver = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // When center image enters viewport, apply zoom effect
+          updatePortfolioZoom();
+          window.addEventListener('scroll', updatePortfolioZoom, { passive: true });
+        } else {
+          // When center image leaves viewport, reset scale and remove scroll listener
+          entry.target.setAttribute(
+            'style',
+            'transform: scale(1) !important; transition: transform 0.2s cubic-bezier(0.4,0,0.2,1); z-index: 2; will-change: transform;'
+          );
+          window.removeEventListener('scroll', updatePortfolioZoom, { passive: true });
+        }
+      });
+    }, { threshold: 0.2 });
+  }
+  portfolioCenterObserver.observe(centerImg);
+  lastObservedCenterImg = centerImg;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  updatePortfolioZoom();
+  observePortfolioCenterImage();
+});
+
+/**
+ * Clientele Section Slide-in Parallax Effect
+ */
+(function() {
+  const clienteleText = document.querySelector('.exterior .interior-text');
+  if (!clienteleText) return;
+
+  function handleIntersection(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        clienteleText.classList.add('clientele-slide-in');
+        clienteleText.classList.remove('clientele-hidden');
+        observer.unobserve(clienteleText);
+      }
+    });
+  }
+
+  const observer = new window.IntersectionObserver(handleIntersection, {
+    threshold: 0.3
+  });
+
+  observer.observe(clienteleText);
 })();
 
 /**
@@ -166,6 +281,10 @@ document.querySelectorAll('.consultation form').forEach(form => {
     rightImg.alt = altTexts[rightIdx];
     rightImg.className = "carousel-image right";
     imagesContainer.appendChild(rightImg);
+
+    // (Zoom effect is now only updated on scroll)
+    updatePortfolioZoom();
+    observePortfolioCenterImage();
   }
 
   function goLeft() {
