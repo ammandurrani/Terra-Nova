@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Terra Nova</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .founder-section {
+      background: #c7ad97;
+      padding: 80px 0 60px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .nav-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .founder-photo-circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #e5ded7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 24px rgba(87, 76, 63, 0.10);
+    }
+    .founder-photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .founder-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.1rem;
+      color: #5a5044;
+      font-weight: 500;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .founder-desc {
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 1.1rem;
+      color: #4d3b2a;
+      max-width: 500px;
+      margin: 0 auto 0 auto;
+      line-height: 1.6;
+    }
+    .vision-section {
+      background: #f3ece6;
+      padding: 70px 0 50px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .vision-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      color: #5a5044;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .vision-content {
+      font-family: 'Cormorant Garamond', 'PT Serif', serif;
+      font-size: 1.45rem;
+      color: #4d3b2a;
+      max-width: 700px;
+      text-align: justify;
+      line-height: 1.5;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    @media (max-width: 700px) {
+      .founder-photo-circle {
+        width: 120px;
+        height: 120px;
+      }
+      .founder-section {
+        padding: 40px 0 30px 0;
+      }
+      .vision-section {
+        padding: 40px 0 30px 0;
+      }
+      .vision-title {
+        font-size: 1.7rem;
+      }
+      .vision-content {
+        font-size: 1.1rem;
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="header" id="navbar">
+    <nav class="navbar">
+      <div class="nav-logo-group">
+        <a href="index.html" class="nav-logo-link" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+          <img src="images/logo.png" alt="Terra Nova Logo" class="nav-logo-img">
+          <span class="nav-logo-text">TERRA NOVA</span>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Founder Section -->
+  <section class="founder-section">
+    <div class="founder-photo-circle">
+      <img src="images/founder.jpg" alt="Founder Photo">
+    </div>  
+    <div class="founder-name">Sajida Ali</div>
+    <div class="founder-desc">
+      Sajida Ali is the creative force behind Terra Nova, blending a passion for timeless design with a commitment to innovation and client vision. With a 10 year background in luxury interiors and bespoke exteriors, Alexandra leads each project with artistry, precision, and a dedication to creating spaces of distinction.
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section class="vision-section">
+    <div class="vision-title">The "Terra Nova" Vision</div>
+    <div class="vision-content">
+      <p>
+        We create luxury living through elegant interior and exterior design, merging sophistication and innovation to craft spaces of timeless design and distinction.
+      </p>
+      <p>
+        Whether modern, minimal, classic, or bold — we bring your vision to life with timeless style and purpose.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer-section">
+    <div class="footer-content">
+      <div class="footer-left">
+        Terra Nova
+      </div>
+      <div class="footer-center">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="footer-social">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="18" stroke="#fff" stroke-width="2" fill="none"/>
+            <path d="M25 20.5h-3v7h-3v-7h-2v-2.5h2v-1.5c0-2 1-3 3-3h2v2.5h-1c-.5 0-1 .25-1 1v1h2.5l-.5 2.5z" stroke="#fff" stroke-width="1.5" fill="none"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer-social">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="18" stroke="#fff" stroke-width="2" fill="none"/>
+            <rect x="13" y="13" width="14" height="14" rx="5" stroke="#fff" stroke-width="1.5" fill="none"/>
+            <circle cx="20" cy="20" r="3.5" stroke="#fff" stroke-width="1.5" fill="none"/>
+            <circle cx="25.5" cy="14.5" r="1" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/" target="_blank" aria-label="WhatsApp" class="footer-social">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="18" stroke="#fff" stroke-width="2" fill="none"/>
+            <path d="M27 23.5c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.3-1 1.2-1.2 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.5-.2-.3 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6-.2 0-.5 0-.8 0-.2 0-.6.1-1 .5-.3.3-1.3 1.2-1.3 2.9 0 1.7 1.3 3.4 1.5 3.6.2.2 2.6 3.8 6.4 5.1.9.3 1.6.5 2.1.6.9.2 1.7.2 2.3.1.7-.1 2.2-.8 2.5-1.7.3-.9.3-1.6.2-1.7-.1-.2-.3-.3-.7-.5z" stroke="#fff" stroke-width="1.5" fill="none"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
