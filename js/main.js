@@ -92,6 +92,21 @@ if (contactForm) {
 })();
 
 /**
+ * Burger menu toggle for mobile navigation
+ */
+(function() {
+  const burger = document.querySelector('.nav-burger');
+  const navLinks = document.getElementById('nav-links');
+  const navbar = document.querySelector('.navbar');
+  if (!burger || !navLinks || !navbar) return;
+
+  burger.addEventListener('click', function() {
+    const isOpen = navbar.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+})();
+
+/**
  * Parallax Zoom Effect for Portfolio Center Image
  * (Patched: always applies after carousel render)
  */

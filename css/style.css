@@ -337,6 +337,40 @@ img {
   position: relative;
 }
 
+/* Burger icon styles */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 120;
+  margin-right: 18px;
+  padding: 0;
+}
+.burger-bar {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.77,0,0.175,1);
+  display: block;
+}
+.navbar.open .nav-burger .burger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar.open .nav-burger .burger-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar.open .nav-burger .burger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -344,6 +378,7 @@ img {
   justify-content: flex-end;
   flex: 1;
   margin: 0;
+  transition: all 0.3s cubic-bezier(0.77,0,0.175,1);
 }
 
 .nav-contact {
@@ -571,6 +606,60 @@ img {
 }
 
 @media (max-width: 700px) {
+  .nav-burger {
+    display: flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    background: rgba(87, 76, 63, 0.98);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    display: none;
+    z-index: 110;
+    box-shadow: 0 4px 24px rgba(87, 76, 63, 0.10);
+    transition: all 0.3s cubic-bezier(0.77,0,0.175,1);
+  }
+  .navbar.open .nav-links {
+    display: flex;
+  }
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid #b8aea4;
+  }
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+  .nav-links li a {
+    width: 100%;
+    display: block;
+    padding: 18px 28px;
+    font-size: 1.15rem;
+    color: #fff;
+    background: none;
+    text-align: left;
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border-radius: 0;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    background: #b8aea4;
+    color: #5a5044;
+  }
+  .nav-logo-group {
+    margin-left: 16px;
+  }
+  .navbar {
+    height: 60px;
+  }
   .hero-title {
     position: relative;
     z-index: 3;
