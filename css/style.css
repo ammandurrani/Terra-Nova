@@ -1314,3 +1314,15 @@ img {
     padding-bottom: 24px;
   }
 }
+
+/* Further reduce hero heading size for very small screens */
+@media (max-width: 500px) {
+  .hero-title,
+  .hero-title .hero-title-original,
+  .hero-title .hero-title-scrolled {
+    font-size: 1.2rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: 1.1;
+  }
+}
